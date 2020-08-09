@@ -21,9 +21,16 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 
 
-
+print(len(features_test[0]))
 #########################################################
 ### your code goes here ###
+from sklearn import tree
+clf = tree.DecisionTreeClassifier(min_samples_split=50)
+t0 = time()
+clf.fit(features_train, labels_train)
+print ("prediction time:", round(time()-t0, 3), "s")
+predict = clf.predict(features_test)
+print(clf.score(features_test, labels_test))
 
 
 #########################################################
